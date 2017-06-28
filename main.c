@@ -1,6 +1,7 @@
 #include "head.h"
 #include "hash.c"
 #include "hashTable.c"
+#include "variable.c"
 #include "cli.c"
 
 int main(int argc,char** argv)
