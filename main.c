@@ -1,9 +1,10 @@
-#include "head.h"
+#include "common.h"
+#include "kml_log.c"
 #include "hash.c"
-#include "hashTable.c"
+#include "kml_hash_table.c"
 #include "variable.c"
+#include "test.c"
 #include "cli.c"
-
 int main(int argc,char** argv)
 {
 
