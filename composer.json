@@ -1,0 +1,10 @@
+{
+    "name": "kearth/revive",
+    "authors": [
+        {
+            "name": "Kearth",
+            "email": "kearth@yeah.net"
+        }
+    ],
+    "require": {}
+}
