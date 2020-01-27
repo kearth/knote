@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="../../layui/css/layui.css?t=1575889601624" media="all">
+        <link rel="stylesheet" type="text/css" href="../../css/index.css">
+    </head>    
+    <body class="knote-iframe-body">
+        <!-- 表单 -->
+        <form lay-skin="switch" class="layui-form" action="">
+            <div class="layui-form-item">
+                <label class="layui-form-label">功能</label>
+                <div class="layui-input-block margin-right-110">
+                    <input type="text" 
+                           name="action" 
+                           required  
+                           lay-verify="required"
+                           placeholder="请输入功能"
+                           autocomplete="off"
+                           class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">优先级</label>
+                <div class="layui-input-block margin-right-110">
+                    <select name="level" 
+                        lay-verify="required|number" 
+                        lay-filter="selectOption" 
+                        id="selectOption">
+                            <script type="text/html" id="optionList">
+                            {{#  layui.each(d, function(index, item){ }}
+                            <option value="{{ item.value }}" > {{ item.level}}</option>
+                            {{#  }); }}
+                            </script>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">链接</label>
+                <div class="layui-input-block margin-right-110">
+                    <input type="text" 
+                           name="link" 
+                           required  
+                           lay-verify="required|url" 
+                           placeholder="请输入链接"
+                           autocomplete="off"
+                           class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" id="formSubmit" lay-submit lay-filter="formSubmit">立即提交</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+        </form>
+        <!-- layui.js -->
+        <script src="../../layui/layui.js?t=1575889601624"></script>
+        <!-- bookmark.js -->
+        <script src="../../src/bookmark/bookmarkform.js?t=1575889601624"></script>
+        </body>
+</html>

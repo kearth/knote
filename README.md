@@ -1,10 +1,12 @@
-# revive
- 这是一个集成了我所遇到的问题的项目，它主要用来对找工作的 PHPer 提供帮助，当然，除此之外它也能对任何对编程感兴趣对人提供一些灵感。
- 
- - 算法
-   - 排序算法 
-   
- - 数据结构
- 
- - 数据库
-  - MYSQL
+# knote
+这是一个浏览器收藏夹，它主要用来临时记录一下本地常用的链接，继承了一些常用工具
+
+- 安装（Install）
+
+```
+git clone git@github.com:kearth/knote.git
+```
+
+- 常见问题(FAQ)
+
+open -n /Applications/Google\ Chrome.app/ --args --disable-web-security  --user-data-dir={your dir}

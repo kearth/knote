@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="../../layui/css/layui.css?t=1575889601624" media="all">
+        <link rel="stylesheet" type="text/css" href="../../css/index.css">
+    </head>    
+    <body class="knote-iframe-body">
+        <!-- 表格 -->
+        <table lay-filter="table" id="userTable" class="layui-table"></table>
+        <!-- 表格左上bar -->
+        <script type="text/html"id="leftHeaderBar">
+            <div class="layui-inline" lay-event="add"><i class="layui-icon layui-icon-add-1"></i></div>
+        </script>
+        <!-- 表格行bar -->
+        <script type="text/html" id="bar">
+            <a lay-event="del"><i class="layui-icon layui-icon-delete"></i></a>
+        </script>
+        <!-- 表格行http -->
+        <script type="text/html" id="link">
+            <a href="{{ d.link }}" target="_blank">{{ d.link }}</a>
+        </script>
+        <!-- layui.js -->
+        <script src="../../layui/layui.js?t=1575889601624"></script>
+        <!-- bookmark.js -->
+        <script src="../../src/bookmark/bookmark.js?t=1575889601624"></script>
+        </body>
+</html>

@@ -2,97 +2,47 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <title>layui在线调试</title>
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <!-- title -->
+        <title>Knote - V1.0</title>
         <link rel="stylesheet" href="./layui/css/layui.css?t=1575889601624" media="all">
-        <style>
-        body{margin: 10px;}
-        .demo-carousel{height: 200px; line-height:200px; text-align: center;}
-        </style>
+        <link rel="stylesheet" type="text/css" href="./css/index.css">
     </head>
     <body>
-        <form class="layui-form" action="">
-            <div class="layui-form-item">
-                <label class="layui-form-label">功能</label>
-                <div class="layui-input-block">
-                    <input type="text" name="action" required  lay-verify="required"
-                                                              placeholder="请输入功能"
-                                                              autocomplete="off"
-                                                              class="layui-input">
+        <!-- body -->
+        <div class="layui-fluid">
+            <!-- nav -->
+            <div class="layui-row">
+                <ul class="layui-nav" lay-filter="navUl" id="navUl">
+                    <script type="text/html" id="nav">
+                    {{#  layui.each(d.list, function(index, item){ }}
+                        <li class="layui-nav-item">
+                            <a herf="javascript:;">{{ item.name }}</li>
+                            <span class="layui-hide">{{ item.src }}</span>
+                        </li>
+                    {{#  }); }}
+                    </script>
+                </ul>
+            </div>
+            <div class="layui-row">
+                <div class="layui-card">
+                    <div class="layui-card-header" id="cardName">{{ d }}</div>
+                    <!-- knote-iframe -->
+                    <div class="layui-card-body">
+                        <iframe class="knote-iframe layui-col-lg12" 
+                                name="knoteContent"
+                                frameborder="0" 
+                                id="iframeId"
+                                src=""
+                                scrolling="no"></iframe>
+                    </div>
+                    <div class="layui-clear" ></div>
                 </div>
             </div>
-            <div class="layui-form-item">
-                <label
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">优先级</label>
-                        <div class="layui-input-block">
-                            <select name="level" lay-verify="required">
-                                <option value=""></option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">链接</label>
-                        <div class="layui-input-block">
-                            <input type="text" name="link" required  lay-verify="required"
-                                                                       placeholder="请输入链接"
-                                                                       autocomplete="off"
-                                                                       class="layui-input">
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <div class="layui-input-block">
-                            <button
-                                        class="layui-btn"
-                                        lay-submit
-                                        lay-filter="formDemo">立即提交</button>
-                            <button
-                                        type="reset"
-                                        class="layui-btn
-                                        layui-btn-primary">重置</button>
-                        </div>
-                    </div>
-        </form>
-        <table id="userTable" class="layui-table"></table>
+        </div>
+        <!-- layui.js -->
         <script src="./layui/layui.js?t=1575889601624"></script>
-        <script>
-            layui.config({
-                version: '1575889601624' //为了更新 js 缓存，可忽略
-            });
-var userTableData = layui.data('userTable');
-var table = layui.table;
-//执行渲染
-layui.use('table', function(){
-    var table = layui.table;
-    table.render({
-        elem: '#userTable', //指定原始表格元素选择器（推荐id选择器）
-        data: userTableData.allData,
-        id: 'userTableId',
-        cols: [[
-            {field: 'action', title: '功能', width:'30%'},
-            {field: 'level', title: '优先级', width:'10%', sort: true},
-            {field: 'link', title: '链接', width:'60%'} 
-        ]] //设置表头
-        //,…… //更多参数参考右侧目录：基本参数选项
-    });
-});
-layui.use('form', function(){
-    var form = layui.form;
-    //监听提交
-    form.on('submit(formDemo)', function(data){
-        layer.msg(JSON.stringify(data.field));
-        console.log(userTableData);
-        userTableData.allData.push(data.field);
-        layui.data('userTable',{key:'allData',
-            value:userTableData.allData});
-        return false;
-    });
-});
-        </script>
+        <!-- nav.js -->
+        <script src="./src/nav.js?t=1575889601624"></script>
     </body>
 </html>        
