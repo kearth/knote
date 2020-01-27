@@ -14,4 +14,6 @@ git clone git@github.com:kearth/knote.git
 
 - 常见问题(FAQ)
 
+```
 open -n /Applications/Google\ Chrome.app/ --args --disable-web-security  --user-data-dir={your dir}
+```
