@@ -1,6 +1,6 @@
 // 初始化配置
 layui.config({
-    base: '../../src/utils/', // 自定义模块路径
+    base: '../../src/bookmark/', // 自定义模块路径
     version: '1575889601624' // 为了更新 js 缓存，可忽略
 });
 
