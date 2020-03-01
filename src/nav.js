@@ -5,7 +5,7 @@ layui.use(['laytpl', 'element'], function(){ var laytpl = layui.laytpl; // nav �
     var navData = { 
         'list': [
             {name: '收藏夹', src:'./tpl/bookmark/bookmark.html'}, 
-            {name: '工具集', src:'./tpl/utils/utils.html'},
+            {name: '工具集', src:'./tpl/utils/tools.html'},
             {name: '地图集', src:'./tpl/maps/diseasemap.html'}
         ]
     }
