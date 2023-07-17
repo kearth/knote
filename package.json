@@ -1,0 +1,14 @@
+{
+    "name": "knote",
+    "version": "1.0.0",
+    "description": "A simple Markdown editing tool",
+    "main": "main.js",
+    "author": "Kearth",
+    "license": "MIT",
+    "devDependencies": {
+        "electron": "^25.3.0"
+    },
+    "scripts": {
+        "start": "electron ."
+    } 
+}
