@@ -6,7 +6,7 @@
     "author": "Kearth",
     "license": "MIT",
     "devDependencies": {
-        "electron": "^25.3.0"
+        "electron": "^25.5.0"
     },
     "scripts": {
         "start": "electron ."
