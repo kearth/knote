@@ -1,0 +1,6 @@
+[Details]
+Icon = "static/icon/icon.jpg"
+Name = "Knote"
+ID = "com.github.knote"
+Version = "1.0.0"
+Build = 1
