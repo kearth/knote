@@ -1,0 +1,42 @@
+{
+  "name": "knote",
+  "version": "1.0.0",
+  "description": "A Vue + Go desktop app powered by Electron.",
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "cross-env ELECTRON_START_URL=http://localhost:5173 concurrently \"vite\" \"electron .\"",
+    "build": "vite build && electron-builder",
+    "dev": "vite"
+  },
+  "dependencies": {
+    "electron": "^26.0.0",
+    "concurrently": "^7.6.0",
+    "cross-env": "^7.0.3"
+  },
+  "devDependencies": {
+    "vite": "^4.4.0",
+    "tailwindcss": "^3.3.0",
+    "electron-builder": "^23.6.0"
+  },
+  "build": {
+    "appId": "com.kearth.knote",
+    "productName": "knote",
+    "files": [
+      "frontend/dist/**/*",
+      "electron/**/*",
+      "backend/**/*"
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "extraFiles": [
+      {
+        "from": "backend/",
+        "to": "backend/",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ]
+  }
+}

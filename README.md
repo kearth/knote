@@ -1,19 +1,19 @@
-# knote
-这是一个浏览器收藏夹，它主要用来临时记录一下本地常用的链接，集成了一些常用工具
+# README
 
-- 安装（Install）
+## About
 
-```
-git clone git@github.com:kearth/knote.git
-```
+This is the official Wails Vue template.
 
-- TODOLIST
+You can configure the project by editing `wails.json`. More information about the project settings can be found
+here: https://wails.io/docs/reference/project-config
 
-1.本地导出后异地导入功能
-2.工具集完善
+## Live Development
 
-- 常见问题(FAQ)
+To run in live development mode, run `wails dev` in the project directory. This will run a Vite development
+server that will provide very fast hot reload of your frontend changes. If you want to develop in a browser
+and have access to your Go methods, there is also a dev server that runs on http://localhost:34115. Connect
+to this in your browser, and you can call your Go code from devtools.
 
-```
-open -n /Applications/Google\ Chrome.app/ --args --disable-web-security  --user-data-dir={your dir}
-```
+## Building
+
+To build a redistributable, production mode package, use `wails build`.
