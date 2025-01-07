@@ -1,11 +1,21 @@
-import {useState} from 'react';
-import logo from './assets/images/logo-universal.png';
+import { useState } from 'react';
+import { Greet } from "../wailsjs/go/main/App";
+import Sidebar from "./layout/Sidebar";
+import FileList from "./layout/FileList";
+import Editor from "./layout/Editor";
+import Welcome from "./layout/Welcome";
 import './App.css';
-import {Greet} from "../wailsjs/go/main/App";
+
+// 是否显示欢迎界面
+function IsWelcome() {
+    return true;
+}
 
 function App() {
     const [resultText, setResultText] = useState("Please enter your name below 👇");
     const [name, setName] = useState('');
+    const [selectedFile, setSelectedFile] = useState(null);
+
     const updateName = (e) => setName(e.target.value);
     const updateResultText = (result) => setResultText(result);
 
@@ -15,11 +25,16 @@ function App() {
 
     return (
         <div id="App">
-            <img src={logo} id="logo" alt="logo"/>
-            <div id="result" className="result">{resultText}</div>
-            <div id="input" className="input-box">
-                <input id="name" className="input" onChange={updateName} autoComplete="off" name="input" type="text"/>
-                <button className="btn" onClick={greet}>Greet</button>
+            <Sidebar />
+            <div className="content-container">
+                {IsWelcome() ? (
+                    <Welcome />
+                ) : (
+                    <>
+                        < FileList setSelectedFile={setSelectedFile} />
+                        <Editor selectedFile={selectedFile} />
+                    </>
+                )}
             </div>
         </div>
     )

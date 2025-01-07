@@ -1,0 +1,20 @@
+.file-list {
+    flex: 1;
+    width: 300px;
+    /* 固定宽度 */
+    background-color: #1e1e1e;
+    color: white;
+    padding: 10px;
+    overflow-y: auto;
+    /* 支持垂直滚动 */
+}
+
+.file-item {
+    padding: 10px;
+    border-bottom: 1px solid #444;
+    cursor: pointer;
+}
+
+.file-item:hover {
+    background-color: #333;
+}
