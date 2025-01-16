@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Greet } from "../wailsjs/go/main/App";
 import Sidebar from "./layout/Sidebar";
 import FileList from "./layout/FileList";
 import Welcome from "./layout/Welcome";
@@ -11,9 +10,6 @@ function App() {
     const [welcome, setWelcome] = useState(true);
 
 
-    // function greet() {
-    //     Greet(name).then(updateResultText);
-    // }
     const handleNewFileClick = () => {
         setWelcome(false); // 切换到 FileList 和 Editor
     };

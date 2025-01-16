@@ -1,23 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
 import "./FileList.css";
+import { Tree } from 'antd';
+import { DownOutlined } from '@ant-design/icons';
+import { GetDirectoryTree } from '../../wailsjs/go/main/App';
+import 'antd/dist/reset.css';
+
+
+// icon: <CarryOutOutlined />,
 
 function FileList({ setSelectedFile }) {
-    const files = [
-        { id: 1, title: "Poem of the Day", content: "New Year's morning..." },
-        { id: 2, title: "Meeting Notes", content: "Discussed project updates." },
-    ];
+    const [treeData, setTreeData] = useState([]);
+    const [showIcon, setShowIcon] = useState(false);
+    const onSelect = (keys, info) => {
+        console.log('Selected:', keys, info);
+    };
+
+    const onExpand = () => {
+        console.log('Expand');
+    };
+
+    useEffect(() => {
+        // 调用后端 API 获取目录结构
+        GetDirectoryTree('').then((data) => {
+            setTreeData(data);
+        });
+    }, []);
 
     return (
         <div className="file-list">
-            {files.map((file) => (
-                <div
-                    key={file.id}
-                    className="file-item"
-                    onClick={() => setSelectedFile(file)}
-                >
-                    {file.title}
-                </div>
-            ))}
+            <Tree
+                showLine
+                switcherIcon={<DownOutlined />}
+                showIcon={showIcon}
+                defaultExpandedKeys={['root']}
+                onSelect={onSelect}
+                treeData={treeData}
+                className='file-list-tree'
+            />
         </div>
     );
 }

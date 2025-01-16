@@ -3,11 +3,16 @@ package main
 import (
 	"context"
 	"fmt"
+	"knote/backend/operate"
+
+	"github.com/gogf/gf/os/gfile"
 )
 
 // App struct
 type App struct {
-	ctx context.Context
+	ctx          context.Context
+	rootDir      string // root directory of the app
+	resourcesDir string // resources directory of the app
 }
 
 // NewApp creates a new App application struct
@@ -21,7 +26,37 @@ func (a *App) startup(ctx context.Context) {
 	a.ctx = ctx
 }
 
-// Greet returns a greeting for the given name
-func (a *App) Greet(name string) string {
-	return fmt.Sprintf("Hello %s, It's show time!", name)
+// GetDirectoryTree 获取目录树
+func (a *App) GetDirectoryTree(path string) ([]*operate.FileNode, error) {
+	var fl []*operate.FileNode
+	var err error
+	if path == "" {
+		path = a.resourcesDir
+	}
+	if !gfile.IsDir(path) {
+		return nil, fmt.Errorf("path is not a directory")
+	}
+	fl, err = operate.GetDirectoryTree(path)
+	fl = []*operate.FileNode{
+		&operate.FileNode{
+			Title:    gfile.Basename(path),
+			Key:      "root", // 根节点
+			Children: fl,
+		},
+	}
+	return fl, err
+}
+
+// App init initializes and runs the application
+func (a *App) init() error {
+	a.rootDir = gfile.Pwd()                             // 默认情况下，获取当前目录
+	a.resourcesDir = gfile.Join(a.rootDir, "resources") // 默认情况下，获取当前目录下的resources目录
+	// 创建resources目录
+	if !gfile.Exists(a.resourcesDir) {
+		err := gfile.Mkdir(a.resourcesDir)
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }

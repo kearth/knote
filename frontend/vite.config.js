@@ -8,4 +8,6 @@ export default defineConfig({
     hmr: true, // 确保 HMR 启用
   },
   root: '.',
+  build: {
+  },
 })

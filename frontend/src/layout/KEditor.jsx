@@ -6,7 +6,7 @@ import "./KEditor.css";
 
 function KEditor({ selectedFile }) {
     const [editor, setEditor] = useState(null)
-    const [html, setHtml] = useState('<p>hello</p>')
+    const [html, setHtml] = useState('<p></p>')
 
     useEffect(() => {
         setTimeout(() => {
