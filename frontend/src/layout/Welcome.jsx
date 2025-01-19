@@ -8,8 +8,10 @@ function Welcome({ setWelcome }) {
     return (
         <div className="welcome">
             <div>
+                <div>
+                    <img className="welcome-img" src={WelcomeImg} alt="knote logo" />
+                </div>
                 <h1>Welcome to Knote!</h1>
-                <img className="welcome-img" src={WelcomeImg} alt="knote logo" />
                 <p>Start by creating a new file.</p>
                 <div className="sidebar-icon">
                     <FaPlusSquare size={24} title="新建" onClick={setWelcome} />
