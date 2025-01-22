@@ -3,6 +3,8 @@ package operate
 import (
 	"os"
 	"path/filepath"
+
+	"github.com/gogf/gf/os/gfile"
 )
 
 type FileNode struct {
@@ -39,4 +41,24 @@ func GetDirectoryTree(rootPath string) ([]*FileNode, error) {
 	}
 
 	return walk(rootPath)
+}
+
+// 创建文件
+func CreateFile(path string) error {
+	if gfile.Exists(path) {
+		return nil
+	}
+	f, err := gfile.Create(path)
+	if err != nil {
+		return err
+	}
+	return f.Close()
+}
+
+// 创建目录
+func CreateDir(path string) error {
+	if gfile.Exists(path) {
+		return nil
+	}
+	return gfile.Mkdir(path)
 }

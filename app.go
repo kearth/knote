@@ -40,11 +40,20 @@ func (a *App) GetDirectoryTree(path string) ([]*operate.FileNode, error) {
 	fl = []*operate.FileNode{
 		&operate.FileNode{
 			Title:    gfile.Basename(path),
-			Key:      "root", // 根节点
+			Key:      "0-root", // 根节点
 			Children: fl,
 		},
 	}
 	return fl, err
+}
+
+// CreateFile 创建文件
+func (a *App) CreateFile(path string, name string) (bool, error) {
+	err := operate.CreateFile(gfile.Join(path, name))
+	if err != nil {
+		return false, err
+	}
+	return true, nil
 }
 
 // App init initializes and runs the application
