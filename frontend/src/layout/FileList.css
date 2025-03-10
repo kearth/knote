@@ -1,10 +1,9 @@
+/*
 .file-list {
     width: 300px;
-    /* 固定宽度 */
     background-color: #3e3e3e;
     padding: 10px;
     overflow-y: auto;
-    /* 支持垂直滚动 */
     scroll-behavior: unset;
 }
 
@@ -15,4 +14,88 @@
 
 .tool_space {
     width: 100%;
+}
+*/
+.file-list {
+    width: 300px;
+    background-color: #2d2d2d;
+    padding: 10px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    border-right: 1px solid #444;
+    transition: background 0.3s ease;
+}
+
+.tool-space {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 8px 0;
+    background: #333;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.tool-space .anticon {
+    color: #ccc;
+    font-size: 16px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.tool-space .anticon:hover {
+    color: #1890ff;
+}
+
+.file-list-tree {
+    background-color: transparent !important;
+    color: #ccc;
+}
+
+.file-list-tree .ant-tree-treenode {
+    padding: 2px 0;
+    transition: background 0.2s ease;
+}
+
+.file-list-tree .ant-tree-treenode:hover {
+    background: #444;
+}
+
+.file-list-tree .ant-tree-node-content-wrapper {
+    display: flex;
+    align-items: center;
+    padding: 2px 4px;
+    border-radius: 2px;
+}
+
+.file-list-tree .ant-tree-iconEle {
+    margin-right: 4px;
+}
+
+.file-list-tree .ant-tree-switcher {
+    transition: transform 0.3s ease;
+}
+
+.file-list-tree .ant-tree-switcher_open {
+    transform: rotate(90deg);
+}
+
+.tree-node-title {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.file-list-tree .ant-tree-node-selected {
+    background: #1890ff !important;
+    color: white !important;
+}
+
+.file-list-tree .ant-input {
+    background: #555;
+    color: white;
+    border: none;
+    padding: 2px 4px;
+    border-radius: 2px;
 }

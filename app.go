@@ -4,6 +4,8 @@ import (
 	"context"
 	"fmt"
 	"knote/backend/operate"
+	"os"
+	"path/filepath"
 
 	"github.com/gogf/gf/os/gfile"
 )
@@ -68,4 +70,14 @@ func (a *App) init() error {
 		}
 	}
 	return nil
+}
+
+// CreateDirectory 创建文件夹
+func (a *App) CreateDirectory(dir, name string) error {
+	return os.MkdirAll(filepath.Join(dir, name), 0755)
+}
+
+// RenameFile 重命名文件或文件夹
+func (a *App) RenameFile(oldPath, newPath string) error {
+	return os.Rename(oldPath, newPath)
 }
