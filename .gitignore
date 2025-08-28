@@ -2,3 +2,4 @@ node_modules/
 /resources
 frontend/wailsjs/go
 frontend/dist/assets
+knote
