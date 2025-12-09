@@ -1,5 +1,9 @@
-node_modules/
-/resources
-frontend/wailsjs/go
-frontend/dist/assets
+.DS_Store
+.env
+/node_modules/
+
+# React Router
+/.react-router/
+/build/
+
 knote
