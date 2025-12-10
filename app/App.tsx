@@ -35,6 +35,9 @@ const App: React.FC = () => {
 
   return (
     <div className="app-container">
+      {/* 应用拖拽区域 - 支持拖拽移动应用 */}
+      <div className="app-drag-region" data-tauri-drag-region></div>
+      
       {sidebarOpen && <Sidebar />}
       
       <main className="main-content">

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import Root from './root';
 import './app.css';
+import './styles.css';
 
 // 获取root元素
 const rootElement = document.getElementById('root');
