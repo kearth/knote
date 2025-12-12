@@ -10,12 +10,12 @@ const SearchContainer: React.FC<SearchContainerProps> = ({ placeholder = '搜索
     <div className="search-container" style={{ 
       display: 'flex', 
       alignItems: 'center',
-      justifyContent: isCollapsed ? 'center' : 'flex-start',
-      padding: isCollapsed ? '10px 0' : '10px'
+      justifyContent: isCollapsed ? 'flex-start' : 'flex-start',
+      padding: isCollapsed ? '10px 12px' : '10px'
     }}>
       <div className="nav-icon">
         {/* Material Design 3 搜索图标 */}
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <circle cx="11" cy="11" r="8" strokeLinecap="round" strokeLinejoin="round"></circle>
           <line x1="21" y1="21" x2="16.65" y2="16.65" strokeLinecap="round" strokeLinejoin="round"></line>
         </svg>

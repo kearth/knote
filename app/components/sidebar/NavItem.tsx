@@ -25,8 +25,11 @@ const NavItem: React.FC<NavItemProps> = ({
       style={{
         display: 'flex',
         alignItems: 'center',
-        justifyContent: isCollapsed ? 'center' : 'flex-start',
-        // padding: '12px'
+        justifyContent: isCollapsed ? 'flex-start' : 'flex-start',
+        padding: '10px 12px',
+        fontSize: '13px',
+        width: '100%',
+        boxSizing: 'border-box'
       }}
     >
       <span className="nav-icon">

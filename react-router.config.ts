@@ -1,7 +1,5 @@
-import type { Config } from "@react-router/dev/config";
-
+// 移除@react-router/dev依赖，使用标准React Router 6.x配置
 export default {
-  // Config options...
-  // Server-side render by default, to enable SPA mode set this to `false`
-  ssr: true,
-} satisfies Config;
+  // 基本配置
+  ssr: false, // 设置为SPA模式
+};

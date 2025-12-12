@@ -6,12 +6,12 @@ import CommandMenu from './components/CommandMenu';
 import Notification from './components/Notification';
 
 const App: React.FC = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [notificationVisible, setNotificationVisible] = useState(true);
   const [notificationMessage, setNotificationMessage] = useState('您的个人空间已准备就绪，可以开始创作了！');
 
   const handleToggleSidebar = () => {
-    setSidebarOpen(!sidebarOpen);
+    setIsSidebarCollapsed(!isSidebarCollapsed);
   };
 
   const handleToggleView = () => {
@@ -38,7 +38,7 @@ const App: React.FC = () => {
       {/* 应用拖拽区域 - 支持拖拽移动应用 */}
       <div className="app-drag-region" data-tauri-drag-region></div>
       
-      {sidebarOpen && <Sidebar />}
+      <Sidebar isCollapsed={isSidebarCollapsed} onToggleSidebar={handleToggleSidebar} />
       
       <main className="main-content">
         <Toolbar 

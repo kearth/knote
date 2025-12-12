@@ -1,21 +1,34 @@
 import React from 'react';
 
-interface RecentItemProps {
+// 定义接口
+export interface RecentItemData {
+  title: string;
+  time: string;
+}
+
+export interface RecentItemProps {
   title: string;
   time: string;
   isCollapsed?: boolean;
 }
 
 const RecentItem: React.FC<RecentItemProps> = ({ title, time, isCollapsed = false }) => {
+  // 截断标题，只显示前15个字符
+  const truncatedTitle = title.length > 15 ? `${title.substring(0, 15)}...` : title;
+  
   return (
     <div
       className="recent-item"
       style={{
-        padding: '12px',
+        padding: '6px 12px',
         cursor: 'pointer',
         position: 'relative',
         display: 'flex',
-        alignItems: 'center'
+        alignItems: 'center',
+        width: '100%',
+        boxSizing: 'border-box',
+        border: 'none',
+        outline: 'none'
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.backgroundColor = '#f0f0f0';
@@ -26,23 +39,18 @@ const RecentItem: React.FC<RecentItemProps> = ({ title, time, isCollapsed = fals
     >
       <div
         className="recent-content"
-        style={{ flex: 1, display: isCollapsed ? 'none' : 'block' }}
+        style={{ flex: 1, display: isCollapsed ? 'none' : 'block', overflow: 'hidden' }}
       >
         <div
           className="recent-title"
           style={{
-            fontSize: '14px',
+            fontSize: '13px',
             color: '#475569',
-            marginBottom: '2px'
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis'
           }}
-        >{title}</div>
-        <div
-          className="recent-time"
-          style={{
-            fontSize: '12px',
-            color: '#94a3b8'
-          }}
-        >{time}</div>
+        >{truncatedTitle}</div>
       </div>
     </div>
   );

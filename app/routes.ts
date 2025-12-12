@@ -1,3 +1,7 @@
-import { type RouteConfig, index } from "@react-router/dev/routes";
-
-export default [index("routes/home.tsx")] satisfies RouteConfig;
+// 简化路由配置，使用标准React Router 6.x
+export const routes = [
+  {
+    path: "/",
+    component: "./routes/home.tsx"
+  }
+];
