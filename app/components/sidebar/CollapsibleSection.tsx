@@ -30,26 +30,27 @@ const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
     <div
       className="collapsible-section"
       style={{
-        marginBottom: '10px',
+        marginBottom: sidebarCollapsed ? '0px' : '10px',
         position: 'relative'
       }}
     >
       <div
-          className="nav-item collapsible"
-          onClick={onToggle}
+          className={`nav-item collapsible ${sidebarCollapsed ? 'collapsed-no-hover' : ''}`}
+          onClick={() => !sidebarCollapsed && onToggle()}
           style={{
             display: 'flex',
             flexDirection: 'row',
             alignItems: 'center',
-            justifyContent: sidebarCollapsed ? 'flex-start' : 'flex-start',
+            justifyContent: sidebarCollapsed ? 'center' : 'flex-start',
             gap: sidebarCollapsed ? '0px' : '10px',
-            padding: '10px 12px',
-            cursor: 'pointer',
+            padding: sidebarCollapsed ? '10px 0px' : '10px 12px',
+            cursor: sidebarCollapsed ? 'default' : 'pointer',
             transition: 'background 0.2s',
             color: '#6b7280',
             fontSize: '13px',
             position: 'relative',
-            zIndex: 2
+            zIndex: 2,
+            pointerEvents: sidebarCollapsed ? 'none' : 'auto'
           }}
       >
         <span 
@@ -59,7 +60,6 @@ const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
           <div
             className="collapse-indicator"
             style={{
-              opacity: 1,
               transition: 'opacity 0.2s ease',
               zIndex: 1
             }}
@@ -70,11 +70,11 @@ const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
               stroke="black"
               strokeWidth="2"
               style={{
-                transition: 'transform 0.2s ease',
-                transform: actualCollapsed ? 'rotate(0deg)' : 'rotate(90deg)',
-                width: '16px',
-                height: '16px'
-              }}
+              transition: 'transform 0.2s ease',
+              transform: actualCollapsed ? 'rotate(0deg)' : 'rotate(-90deg)',
+              width: '16px',
+              height: '16px'
+            }}
             >
               <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round"></path>
             </svg>

@@ -25,8 +25,9 @@ const NavItem: React.FC<NavItemProps> = ({
       style={{
         display: 'flex',
         alignItems: 'center',
-        justifyContent: isCollapsed ? 'flex-start' : 'flex-start',
-        padding: '10px 12px',
+        justifyContent: isCollapsed ? 'center' : 'flex-start',
+        height: '56px',
+        // padding: isCollapsed ? '10px 0px' : '10px 12px',
         fontSize: '13px',
         width: '100%',
         boxSizing: 'border-box'

@@ -27,6 +27,31 @@ body {
   overflow: hidden;
 }
 
+/* 自定义滚动条样式 - 最细 */
+::-webkit-scrollbar {
+  width: 4px; /* 宽度设为最细 */
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Firefox滚动条样式 */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
 .app-container {
   display: flex;
   height: 100vh;
@@ -133,11 +158,6 @@ body {
   border-top: none;
 }
 
-/* 搜索容器中的图标样式 */
-.search-container .nav-icon {
-  margin-right: 8px;
-}
-
 /* 折叠面板内项目样式 */
 .collapsible-content .recent-item {
   padding: 0.5rem 0 0.5rem 1rem;
@@ -192,37 +212,47 @@ body {
 }
 
 /* 悬停时的圆形效果 - 只在鼠标放到svg图标上时显示 */
-.nav-icon:hover {
+/* 仅可折叠导航项的图标添加hover效果，对话和搜索图标不加hover */
+.nav-icon:not(.collapsible-nav-icon):hover {
+  background-color: transparent;
+}
+
+/* 可折叠导航项的图标添加hover效果 - 仅在侧边栏展开时生效 */
+.nav-icon.collapsible-nav-icon:not(.collapsed-no-hover):hover {
   background-color: rgba(156, 163, 175, 0.7);
   border-radius: 50%;
   color: #374151;
 }
 
-/* 普通导航项的悬停效果 */
-.nav-item:not(.collapsible) .nav-icon:hover svg:first-child {
-  opacity: 0;
-}
-
-/* 可折叠导航项的特殊处理 */
-.collapsible-nav-icon {
+/* 所有导航图标容器设置统一宽度和高度 */
+.nav-icon {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 20px;
   height: 20px;
+}
+
+/* 普通导航项（对话和搜索）不添加hover效果 */
+.nav-item:not(.collapsible) .nav-icon:hover svg:first-child {
+  opacity: 1;
+}
+
+/* 可折叠导航项的特殊处理 */
+.collapsible-nav-icon {
   cursor: pointer;
   border-radius: 50%;
   transition: all 0.2s ease;
 }
 
-/* 可折叠图标悬停时显示圆形背景 */
-.collapsible-nav-icon:hover {
+/* 可折叠图标悬停时显示圆形背景 - 仅在侧边栏展开时生效 */
+.collapsible-nav-icon:not(.collapsed-no-hover):hover {
   background-color: #e2e8f0;
 }
 
-/* 可折叠图标悬停时隐藏原图标 */
-.collapsible-nav-icon:hover svg:first-child {
+/* 可折叠图标悬停时隐藏原图标 - 仅在侧边栏展开时生效 */
+.collapsible-nav-icon:not(.collapsed-no-hover):hover>svg:first-child {
   opacity: 0;
 }
 
@@ -237,6 +267,29 @@ body {
   align-items: center;
   justify-content: center;
   pointer-events: none;
+  opacity: 0;
+}
+
+/* 悬停时显示折叠指示器 - 仅在侧边栏展开时生效 */
+.collapsible-nav-icon:not(.collapsed-no-hover):hover .collapse-indicator {
+  opacity: 1;
+}
+
+/* 侧边栏收起时禁用所有hover效果 */
+.collapsed-no-hover {
+  pointer-events: none !important;
+}
+
+.collapsed-no-hover:hover {
+  background-color: transparent !important;
+}
+
+.collapsed-no-hover:hover>svg:first-child {
+  opacity: 1 !important;
+}
+
+.collapsed-no-hover:hover .collapse-indicator {
+  opacity: 0 !important;
 }
 
 .collapse-indicator svg {

@@ -5,13 +5,14 @@ interface SearchContainerProps {
   isCollapsed?: boolean;
 }
 
-const SearchContainer: React.FC<SearchContainerProps> = ({ placeholder = '搜索笔记...', isCollapsed = false }) => {
+const SearchContainer: React.FC<SearchContainerProps> = ({ placeholder = '搜索...', isCollapsed = false }) => {
   return (
-    <div className="search-container" style={{ 
-      display: 'flex', 
+    <div className="search-container" style={{
+      display: 'flex',
       alignItems: 'center',
-      justifyContent: isCollapsed ? 'flex-start' : 'flex-start',
-      padding: isCollapsed ? '10px 12px' : '10px'
+      justifyContent: isCollapsed ? 'center' : 'flex-start',
+      padding: isCollapsed ? '10px 0px' : '10px 12px',
+      height: '56px',
     }}>
       <div className="nav-icon">
         {/* Material Design 3 搜索图标 */}

@@ -63,14 +63,14 @@ const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, onToggleSidebar }) => {
 
   return (
     <aside className={`sidebar ${isCollapsed ? 'collapsed' : ''}`} id="sidebar" style={{ display: 'flex', flexDirection: 'column', height: '100%', width: isCollapsed ? '60px' : '250px', transition: 'width 0.3s ease', borderRight: '1px solid #e2e8f0' }}>
-      <div className="sidebar-header" style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', padding: '40px 0px 10px 15px' }}>
+      <div className="sidebar-header" style={{ display: 'flex', justifyContent: isCollapsed ? 'center' : 'flex-start', alignItems: 'center', padding: isCollapsed ? '40px 0px 10px 0px' : '40px 0px 10px 15px' }}>
         <div className="logo">
           <img src="/images/logo-white.png" width="36" height="36" alt="logo" style={{ display: 'block' }} />
         </div>
       </div>
 
       <nav className="nav-section" style={{ flexGrow: 1, overflowY: 'auto', overflowX: 'hidden', padding: isCollapsed ? '0px' : '0px 10px' }}>
-        <SearchContainer placeholder="搜索笔记..." isCollapsed={isCollapsed} />
+        <SearchContainer placeholder="搜索..." isCollapsed={isCollapsed} />
 
         <NavItem
           icon={
