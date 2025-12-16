@@ -10,15 +10,17 @@ export interface RecentItemProps {
   title: string;
   time: string;
   isCollapsed?: boolean;
+  onClick?: () => void;
 }
 
-const RecentItem: React.FC<RecentItemProps> = ({ title, time, isCollapsed = false }) => {
+const RecentItem: React.FC<RecentItemProps> = ({ title, time, isCollapsed = false, onClick }) => {
   // 截断标题，只显示前15个字符
   const truncatedTitle = title.length > 15 ? `${title.substring(0, 15)}...` : title;
   
   return (
     <div
       className="recent-item"
+      onClick={onClick}
       style={{
         padding: '6px 12px',
         cursor: 'pointer',

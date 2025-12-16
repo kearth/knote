@@ -14,6 +14,7 @@ interface CollapsibleSectionProps {
   sidebarCollapsed: boolean;
   items: CollapsibleItem[];
   onToggle: () => void;
+  onPageChange?: (page: string) => void;
 }
 
 const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
@@ -22,7 +23,8 @@ const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
   isCollapsed,
   sidebarCollapsed,
   items,
-  onToggle
+  onToggle,
+  onPageChange
 }) => {
   // 当侧边栏收起时，自动折叠所有可折叠项目
   const actualCollapsed = sidebarCollapsed ? true : isCollapsed;
@@ -35,25 +37,25 @@ const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
       }}
     >
       <div
-          className={`nav-item collapsible ${sidebarCollapsed ? 'collapsed-no-hover' : ''}`}
-          onClick={() => !sidebarCollapsed && onToggle()}
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: sidebarCollapsed ? 'center' : 'flex-start',
-            gap: sidebarCollapsed ? '0px' : '10px',
-            padding: sidebarCollapsed ? '10px 0px' : '10px 12px',
-            cursor: sidebarCollapsed ? 'default' : 'pointer',
-            transition: 'background 0.2s',
-            color: '#6b7280',
-            fontSize: '13px',
-            position: 'relative',
-            zIndex: 2,
-            pointerEvents: sidebarCollapsed ? 'none' : 'auto'
-          }}
+        className={`nav-item collapsible ${sidebarCollapsed ? 'collapsed-no-hover' : ''}`}
+        onClick={() => !sidebarCollapsed && onToggle()}
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: sidebarCollapsed ? 'center' : 'flex-start',
+          gap: sidebarCollapsed ? '0px' : '10px',
+          padding: sidebarCollapsed ? '10px 0px' : '10px 12px',
+          cursor: sidebarCollapsed ? 'default' : 'pointer',
+          transition: 'background 0.2s',
+          color: '#6b7280',
+          fontSize: '13px',
+          position: 'relative',
+          zIndex: 2,
+          pointerEvents: sidebarCollapsed ? 'none' : 'auto'
+        }}
       >
-        <span 
+        <span
           className="nav-icon collapsible-nav-icon"
         >
           {icon}
@@ -70,11 +72,11 @@ const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
               stroke="black"
               strokeWidth="2"
               style={{
-              transition: 'transform 0.2s ease',
-              transform: actualCollapsed ? 'rotate(0deg)' : 'rotate(-90deg)',
-              width: '16px',
-              height: '16px'
-            }}
+                transition: 'transform 0.2s ease',
+                transform: actualCollapsed ? 'rotate(-90deg)' : 'rotate(0deg)',
+                width: '16px',
+                height: '16px'
+              }}
             >
               <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round"></path>
             </svg>
@@ -113,7 +115,7 @@ const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
         {/* 实际内容 */}
         <div className="recent-items">
           {items.map((item, index) => (
-            <RecentItem key={index} title={item.title} time={item.time} isCollapsed={sidebarCollapsed} />
+            <RecentItem key={index} title={item.title} time={item.time} isCollapsed={sidebarCollapsed} onClick={() => onPageChange?.('other')} />
           ))}
         </div>
       </div>

@@ -9,6 +9,12 @@ const App: React.FC = () => {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [notificationVisible, setNotificationVisible] = useState(true);
   const [notificationMessage, setNotificationMessage] = useState('您的个人空间已准备就绪，可以开始创作了！');
+  // 当前显示的页面
+  const [currentPage, setCurrentPage] = useState('home');
+  
+  const handlePageChange = (page: string) => {
+    setCurrentPage(page);
+  };
 
   const handleToggleSidebar = () => {
     setIsSidebarCollapsed(!isSidebarCollapsed);
@@ -38,7 +44,7 @@ const App: React.FC = () => {
       {/* 应用拖拽区域 - 支持拖拽移动应用 */}
       <div className="app-drag-region" data-tauri-drag-region></div>
       
-      <Sidebar isCollapsed={isSidebarCollapsed} onToggleSidebar={handleToggleSidebar} />
+      <Sidebar isCollapsed={isSidebarCollapsed} onToggleSidebar={handleToggleSidebar} onPageChange={handlePageChange} />
       
       <main className="main-content">
         <Toolbar 
@@ -48,7 +54,7 @@ const App: React.FC = () => {
           onToggleStar={handleToggleStar}
         />
         
-        <Workspace />
+        <Workspace currentPage={currentPage} />
       </main>
       
       <CommandMenu />

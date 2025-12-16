@@ -2,6 +2,6 @@
 export const routes = [
   {
     path: "/",
-    component: "./routes/home.tsx"
+    component: "./components/page/home.tsx"
   }
 ];

@@ -4,6 +4,7 @@ import NavItem from './sidebar/NavItem';
 import RecentItem from './sidebar/RecentItem';
 import CollapsibleSection from './sidebar/CollapsibleSection';
 import UserSection from './sidebar/UserSection';
+import Logo from './Logo';
 
 // 本地定义接口，避免导入导出问题
 interface RecentItemData {
@@ -14,9 +15,10 @@ interface RecentItemData {
 interface SidebarProps {
   isCollapsed: boolean;
   onToggleSidebar?: () => void;
+  onPageChange?: (page: string) => void;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, onToggleSidebar }) => {
+const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, onToggleSidebar, onPageChange }) => {
 
   // 更新后的项目内容
   const projectItems: RecentItemData[] = [
@@ -63,11 +65,8 @@ const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, onToggleSidebar }) => {
 
   return (
     <aside className={`sidebar ${isCollapsed ? 'collapsed' : ''}`} id="sidebar" style={{ display: 'flex', flexDirection: 'column', height: '100%', width: isCollapsed ? '60px' : '250px', transition: 'width 0.3s ease', borderRight: '1px solid #e2e8f0' }}>
-      <div className="sidebar-header" style={{ display: 'flex', justifyContent: isCollapsed ? 'center' : 'flex-start', alignItems: 'center', padding: isCollapsed ? '40px 0px 10px 0px' : '40px 0px 10px 15px' }}>
-        <div className="logo">
-          <img src="/images/logo-white.png" width="36" height="36" alt="logo" style={{ display: 'block' }} />
-        </div>
-      </div>
+      {/* Logo部分 */}
+      <Logo onClick={() => onPageChange?.('home')} />
 
       <nav className="nav-section" style={{ flexGrow: 1, overflowY: 'auto', overflowX: 'hidden', padding: isCollapsed ? '0px' : '0px 10px' }}>
         <SearchContainer placeholder="搜索..." isCollapsed={isCollapsed} />
@@ -82,6 +81,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, onToggleSidebar }) => {
           label="对话"
           active={false}
           dataPage="chat"
+          onClick={() => onPageChange?.('chat')}
           isCollapsed={isCollapsed}
         />
 
@@ -97,6 +97,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, onToggleSidebar }) => {
           sidebarCollapsed={isCollapsed}
           items={projectItems}
           onToggle={() => toggleSection('projects')}
+          onPageChange={onPageChange}
         />
 
         <CollapsibleSection
@@ -110,6 +111,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, onToggleSidebar }) => {
           sidebarCollapsed={isCollapsed}
           items={pinnedItems}
           onToggle={() => toggleSection('pinned')}
+          onPageChange={onPageChange}
         />
 
         <CollapsibleSection
@@ -124,6 +126,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, onToggleSidebar }) => {
           sidebarCollapsed={isCollapsed}
           items={historyItems}
           onToggle={() => toggleSection('history')}
+          onPageChange={onPageChange}
         />
       </nav>
 

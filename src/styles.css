@@ -59,6 +59,8 @@ body {
   overflow: hidden;
 }
 
+/* Logo样式已经移回Sidebar组件内部 */
+
 /* 应用拖拽区域样式 */
 .app-drag-region {
   position: absolute;

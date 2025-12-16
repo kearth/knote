@@ -25,7 +25,7 @@ export default defineConfig({
   // 配置路径别名
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "app"),
+      "@": path.resolve(__dirname, "src"),
     },
   },
 });

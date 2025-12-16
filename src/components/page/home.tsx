@@ -8,7 +8,7 @@ interface ContentCard {
   metaText: string;
 }
 
-const Workspace: React.FC = () => {
+export default function Home() {
   const recentCards: ContentCard[] = [
     { 
       icon: '📝', 
@@ -117,6 +117,4 @@ const Workspace: React.FC = () => {
       </div>
     </div>
   );
-};
-
-export default Workspace;
+}
