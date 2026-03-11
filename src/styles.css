@@ -27,10 +27,11 @@ body {
   overflow: hidden;
 }
 
-/* 自定义滚动条样式 - 最细 */
+/* 自定义滚动条样式 - 完全隐藏，仅滚动时显示 */
+/* 全局滚动条基础样式 - 隐藏 */
 ::-webkit-scrollbar {
-  width: 4px; /* 宽度设为最细 */
-  height: 4px;
+  width: 0px; /* 宽度为0，完全隐藏 */
+  height: 0px;
 }
 
 ::-webkit-scrollbar-track {
@@ -38,18 +39,45 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 2px;
+  background: transparent;
+  border-radius: 0;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+/* 针对侧边栏滚动区域的特殊处理 */
+.sidebar,
+.nav-section {
+  /* 隐藏滚动条但保持滚动功能 */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  overflow-y: auto;
 }
 
-/* Firefox滚动条样式 */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: #cbd5e1 transparent;
+/* 仅在滚动时显示滚动条的技巧 */
+/* 使用伪元素和滚动事件检测 */
+/* 注意：这需要JavaScript配合，但我们可以用CSS实现接近的效果 */
+
+/* 当内容超出时显示滚动条，但默认隐藏 */
+.sidebar:not(:hover)::-webkit-scrollbar, 
+.nav-section:not(:hover)::-webkit-scrollbar {
+  width: 0px;
+}
+
+/* 当鼠标悬停时显示极窄的滚动条 */
+.sidebar:hover::-webkit-scrollbar, 
+.nav-section:hover::-webkit-scrollbar {
+  width: 2px;
+}
+
+.sidebar:hover::-webkit-scrollbar-thumb, 
+.nav-section:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(160, 174, 192, 0.3);
+  border-radius: 1px;
+}
+
+/* 当鼠标在滚动区域内并且滚动时，滚动条更明显 */
+.sidebar:hover::-webkit-scrollbar-thumb:hover, 
+.nav-section:hover::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(160, 174, 192, 0.6);
 }
 
 .app-container {
